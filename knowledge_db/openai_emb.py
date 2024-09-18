@@ -16,7 +16,7 @@ class OpenAIEmbedding:
     def __init__(self, config: Dict):
         self.config = config
         self.key = self.config['key']
-        self.url = self.config.get('url', 'https://api.openai-proxy.org')
+        self.url = self.config.get('url', 'https://api.openai-proxy.org/v1')
 
     @retry(stop=stop_after_attempt(5), wait=wait_fixed(5))
     def get_emb(self, texts: List[str]) -> np.array:

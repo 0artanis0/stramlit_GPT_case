@@ -31,7 +31,7 @@ with st.sidebar:
     chat_model = st.selectbox(
         "Select Chat Model",
         ['gpt-3.5-turbo-16k', "gpt-3.5-turbo", 'gpt-3.5-turbo-1106', "gpt-4", 'gpt-4-0125-preview',
-         'gpt-4-turbo-preview', 'gpt-4-1106-preview', 'gpt-4-vision-preview'],
+         'gpt-4-turbo-preview', 'gpt-4-1106-preview', 'gpt-4-vision-preview', 'gpt-4o-2024-08-06 '],
     )
     # openai_key设置
     apikey = st.text_input("输入你的OpenAI API密钥", type="password")
