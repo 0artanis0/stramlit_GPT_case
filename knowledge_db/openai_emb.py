@@ -16,7 +16,8 @@ class OpenAIEmbedding:
     def __init__(self, config: Dict):
         self.config = config
         self.key = self.config['key']
-        self.url = self.config.get('url', 'https://api.openai-proxy.org/v1')
+        # self.url = self.config.get('url', 'https://api.closeai-proxy.xyz/v1')
+        self.url = 'https://api.closeai-proxy.xyz/v1'
 
     @retry(stop=stop_after_attempt(5), wait=wait_fixed(5))
     def get_emb(self, texts: List[str]) -> np.array:
@@ -31,7 +32,7 @@ class OpenAIEmbedding:
         response = requests.post(self.url,
                                  headers=headers, json=payload, stream=False, timeout=180)
         response = json.loads(response.text)
-        # print(texts,response)
+        print(texts,response)
         emb_array = []
         for i in range(len(response['data'])):
             emb_array.append(response['data'][i]['embedding'])

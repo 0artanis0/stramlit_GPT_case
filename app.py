@@ -35,7 +35,7 @@ with st.sidebar:
     )
     # openai_key设置
     apikey = st.text_input("输入你的OpenAI API密钥", type="password")
-    # apikey = 'sk-NqzRPn167jVENtffBIWrZwXZ7ALXu347511FkEDVtrDJuXDR'
+    apikey = 'sk-NqzRPn167jVENtffBIWrZwXZ7ALXu347511FkEDVtrDJuXDR'
 
     # 文件上传器
     uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
