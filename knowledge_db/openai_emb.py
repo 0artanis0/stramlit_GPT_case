@@ -29,7 +29,7 @@ class OpenAIEmbedding:
             "input": texts
         }
         response = requests.post(self.url,
-                                 headers=headers, json=payload, stream=False, timeout=180)
+                                 headers=headers, json=payload, stream=False, timeout=680)
         response = json.loads(response.text)
         # print(texts,response)
         emb_array = []
