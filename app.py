@@ -10,7 +10,7 @@ from pdf_processor import extract_text_by_paragraph
 from utils import save_uploaded_file
 import os
 
-st.title("王门智能问答小助手-内测版")
+st.title("智能问答小助手")
 
 # 对话session初始化
 if "messages" not in st.session_state:
@@ -31,11 +31,10 @@ with st.sidebar:
     chat_model = st.selectbox(
         "Select Chat Model",
         ['gpt-3.5-turbo-16k', "gpt-3.5-turbo", 'gpt-3.5-turbo-1106', "gpt-4", 'gpt-4-0125-preview',
-         'gpt-4-turbo-preview', 'gpt-4-1106-preview', 'gpt-4-vision-preview', 'gpt-4o-2024-08-06 '],
+         'gpt-4-turbo-preview', 'gpt-4-1106-preview', 'gpt-4-vision-preview'],
     )
     # openai_key设置
     apikey = st.text_input("输入你的OpenAI API密钥", type="password")
-    apikey = 'sk-NqzRPn167jVENtffBIWrZwXZ7ALXu347511FkEDVtrDJuXDR'
 
     # 文件上传器
     uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
@@ -61,7 +60,7 @@ with st.sidebar:
     else:
         st.stop()
 
-emb_model = EmbModel({'model_type': 'openai', 'key': apikey})
+# emb_model = EmbModel({'model_type': 'openai', 'key': apikey})
 vector_db = VectorDB(emb_model)
 vector_db.load_emb('./db/temp.json')
 model = ChatModel({'openai-key': apikey, 'model': chat_model, 'model_type': 'openai'}, vector_db)
